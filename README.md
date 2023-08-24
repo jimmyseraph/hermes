@@ -21,7 +21,7 @@ You need to initialize a `Cache` struct to store all your variables and function
 
 See example below:
 ```rust
-use hermes::{cache::{ ExpType, Cache, CacheVariable }, error::Error};
+use hermes_ru::{cache::{ ExpType, Cache, CacheVariable }, error::Error};
 
 fn main() {
     // new a cache with 10 size capacity
