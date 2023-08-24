@@ -1,4 +1,4 @@
-use hermes::{cache::{ ExpType, Cache, CacheVariable }, error::Error};
+use hermes_ru::{cache::{ ExpType, Cache, CacheVariable }, error::Error, lexer::parse_to_string};
 
 fn main() {
     // new a cache with 10 size capacity
@@ -28,6 +28,6 @@ fn main() {
     let input = "${hostname()}+\"dd\"+true+${name}+${invalid}+${random_str(${len})}+${multiply(1,-2.5,3)}}";
     
     // parse the str
-    println!("parse result is: {}", hermes::lexer::parse_to_string(input, &mut cache));
+    println!("parse result is: {}", parse_to_string(input, &mut cache));
 
 }
