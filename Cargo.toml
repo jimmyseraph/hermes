@@ -11,7 +11,7 @@ homepage = "https://github.com/jimmyseraph/hermes"
 description = """
 A very convenient string parsing crate that can parse function and variable references in strings into corresponding values.
 """
-categories = ["Parsing tools"]
+categories = ["parser-implementations"]
 keywords = ["parser"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
