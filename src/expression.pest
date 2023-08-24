@@ -1,0 +1,22 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+variable = ${ "${" ~ variable_name ~ "}" }
+variable_name = { token_name }
+token_name = _{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC|"_")* }
+string = ${ "\"" ~ inner ~ "\"" }
+inner = @{ char* }
+char = {
+    !("\"" | "\\") ~ ANY
+    | "\\" ~ ("\"" | "\\" | "/" | "b" | "f" | "n" | "r" | "t")
+    | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
+}
+number = @{
+    "-"?
+    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
+    ~ ("." ~ ASCII_DIGIT*)?
+}
+boolean = { "true" | "false" }
+function_arg = { variable | function | number | boolean | string }
+function_name = { token_name }
+function = ${ "${" ~ function_name ~ "(" ~ (function_arg ~ ("," ~ function_arg)*)?  ~ ")" ~ "}" }
+item = _{ variable | function | number | boolean | string }
+expression = _{ item ~ ( "+" ~ item)* }
